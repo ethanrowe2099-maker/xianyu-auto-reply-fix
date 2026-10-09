@@ -226,7 +226,11 @@ def _check_and_install_playwright():
             from playwright.sync_api import sync_playwright
             with sync_playwright() as p:
                 try:
-                    browser = p.chromium.launch(headless=True)
+                    browser_path = os.getenv('XY_SLIDER_BROWSER_PATH', '').strip()
+                    launch_options = {'headless': True}
+                    if browser_path:
+                        launch_options['executable_path'] = browser_path
+                    browser = p.chromium.launch(**launch_options)
                     browser.close()
                     print(f"{_OK} Playwright浏览器已安装（通过API检测）")
                     playwright_installed = True

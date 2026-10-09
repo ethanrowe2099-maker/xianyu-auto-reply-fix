@@ -5,6 +5,7 @@
 """
 
 import asyncio
+import os
 import time
 import uuid
 import json
@@ -274,6 +275,7 @@ class QRLoginManager:
             playwright = await async_playwright().start()
             browser = await playwright.chromium.launch(
                 headless=True,
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=[
                     '--no-sandbox',
                     '--disable-setuid-sandbox',

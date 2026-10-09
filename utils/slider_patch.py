@@ -1648,6 +1648,7 @@ def patch_login_with_password_headful():
                     # 启动浏览器（使用持久化上下文）
                     context = playwright.chromium.launch_persistent_context(
                         user_data_dir,  # 第一个参数就是用户数据目录
+                        executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                         headless=not show_browser,
                         args=browser_args,
                         viewport={'width': 1980, 'height': 1024},

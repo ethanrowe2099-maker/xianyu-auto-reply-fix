@@ -9491,6 +9491,7 @@ class XianyuLive:
 
             browser = await playwright.chromium.launch(
                 headless=True,  # 移动模式使用无头模式
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=browser_args
             )
 
@@ -14156,6 +14157,7 @@ class XianyuLive:
             # 使用无头浏览器
             browser = await playwright.chromium.launch(
                 headless=True,  # 改回无头模式
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=browser_args
             )
 
@@ -14547,6 +14549,7 @@ class XianyuLive:
             show_browser = bool(account_info.get('show_browser', False))
             browser = await playwright.chromium.launch(
                 headless=not show_browser,
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=browser_args
             )
 
@@ -14836,6 +14839,7 @@ class XianyuLive:
             show_browser = bool(account_info.get('show_browser', False))
             browser = await playwright.chromium.launch(
                 headless=not show_browser,
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=browser_args
             )
 

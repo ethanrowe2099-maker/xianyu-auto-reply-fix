@@ -724,6 +724,7 @@ class XianyuSearcher:
             # 这样通过一次滑块验证后，下次搜索可以复用缓存，避免再次出现滑块
             self.context = await playwright.chromium.launch_persistent_context(
                 user_data_dir,  # 第一个参数是用户数据目录，用于持久化
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 headless=True,  # 无头模式，后台运行
                 args=browser_args,
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -1630,6 +1631,5 @@ async def search_multiple_pages_xianyu(keyword: str, total_pages: int = 1) -> Di
         'total': 0,
         'error': "未知错误"
     }
-
 
 

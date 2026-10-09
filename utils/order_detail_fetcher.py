@@ -188,6 +188,7 @@ class OrderDetailFetcher:
             logger.info(f"启动浏览器，参数: {browser_args}")
             self.browser = await self._playwright.chromium.launch(
                 headless=headless,
+                executable_path=os.getenv('XY_SLIDER_BROWSER_PATH') or None,
                 args=browser_args
             )
 
